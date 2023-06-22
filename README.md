@@ -6,4 +6,6 @@
 2.  with this plugin you can make alliances and several other things with your faction.
 
 
+[Donate](https://www.paypal.me/streesmc)
+
 [![Discord Presence](https://lanyard.cnrad.dev/api/1094481422292627496)](https://discord.com/users/1094481422292627496)
