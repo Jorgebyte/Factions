@@ -7,10 +7,6 @@ parameters:
 		- phpstan-bootstrap.php
 	ignoreErrors:
 		- identifier: missingType.iterableValue
-		- identifier: argument.templateType
-		- identifier: greater.alwaysTrue
 		- identifier: generics.notSubtype
-
-
 
 

@@ -25,8 +25,10 @@ final class TranslatorLoader
 {
     public static function loadFromFolder(Main $plugin): Translator
     {
-        $translator = new Translator($plugin);
+        $default = (string) $plugin->getConfig()->get("default-language", Main::DEFAULT_LANGUAGE);
+        $translator = new Translator($default);
         $path = $plugin->getDataFolder() . "languages" . DIRECTORY_SEPARATOR;
+        $loadedLocales = [];
 
         $files = glob($path . "*.ini");
         if ($files !== false) {
@@ -38,16 +40,12 @@ final class TranslatorLoader
                     throw new \RuntimeException("Invalid language file: {$file}");
                 }
 
+                $loadedLocales[] = $locale;
                 $translator->registerLanguage(new Language($locale, array_map('stripcslashes', $data)));
             }
         }
 
-        $default = $plugin->getConfig()->get("default-language", Main::DEFAULT_LANGUAGE);
-        $defaultLang = $translator->getLanguage($default);
-
-        if ($defaultLang !== null) {
-            $translator->setDefaultLanguage($defaultLang);
-        } else {
+        if (!in_array($default, $loadedLocales, true)) {
             $plugin->getLogger()->warning("Default language '{$default}' not found.");
         }
 
