@@ -32,8 +32,9 @@ final class CachePriorityTest extends TestCase
 
     public function testCachePriorityOrdering(): void
     {
-        $this->assertTrue(CachePriority::CRITICAL->value > CachePriority::HIGH->value);
-        $this->assertTrue(CachePriority::HIGH->value > CachePriority::MEDIUM->value);
-        $this->assertTrue(CachePriority::MEDIUM->value > CachePriority::LOW->value);
+        $this->assertSame(
+            [1, 2, 3, 4],
+            array_map(static fn(CachePriority $priority): int => $priority->value, CachePriority::cases())
+        );
     }
 }

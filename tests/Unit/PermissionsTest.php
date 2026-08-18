@@ -25,7 +25,7 @@ final class PermissionsTest extends TestCase
     public function testPermissionValuesAreStrings(): void
     {
         foreach (Permissions::cases() as $permission) {
-            $this->assertIsString($permission->value);
+            $this->assertNotSame('', $permission->value);
             $this->assertStringStartsWith('factions.command', $permission->value);
         }
     }

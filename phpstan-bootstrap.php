@@ -298,3 +298,195 @@ namespace IvanCraft623\RankSystem\tag {
         }
     }
 }
+
+namespace SOFe\AwaitGenerator {
+    if (!class_exists(Await::class)) {
+        final class Await
+        {
+            public static function f2c(\Closure $generatorFactory): void
+            {
+            }
+
+            public static function promise(\Closure $executor): \Generator
+            {
+                if (false) {
+                    yield null;
+                }
+                return null;
+            }
+
+            /**
+             * @param array<int|string, mixed> $promises
+             */
+            public static function all(array $promises): \Generator
+            {
+                if (false) {
+                    yield null;
+                }
+                return [];
+            }
+        }
+    }
+}
+
+namespace poggit\libasynql {
+    if (!class_exists(DataConnector::class)) {
+        final class DataConnector
+        {
+            /**
+             * @param array<string, mixed> $args
+             */
+            public function asyncSelect(string $queryName, array $args = []): \Generator
+            {
+                if (false) {
+                    yield null;
+                }
+                return [];
+            }
+
+            /**
+             * @param array<string, mixed> $args
+             */
+            public function asyncInsert(string $queryName, array $args = []): \Generator
+            {
+                if (false) {
+                    yield null;
+                }
+                return 1;
+            }
+
+            /**
+             * @param array<string, mixed> $args
+             */
+            public function asyncChange(string $queryName, array $args = []): \Generator
+            {
+                if (false) {
+                    yield null;
+                }
+                return 1;
+            }
+
+            /**
+             * @param array<string, mixed> $args
+             */
+            public function asyncGeneric(string $queryName, array $args = []): \Generator
+            {
+                if (false) {
+                    yield null;
+                }
+                return [];
+            }
+
+            /**
+             * @param array<string, mixed> $args
+             */
+            public function executeChange(string $queryName, array $args = []): void
+            {
+            }
+
+            public function close(): void
+            {
+            }
+        }
+    }
+
+    if (!class_exists(libasynql::class)) {
+        final class libasynql
+        {
+            /**
+             * @param array<string, mixed> $databaseConfig
+             * @param array<string, string> $sqlFileMap
+             */
+            public static function create(object $plugin, array $databaseConfig, array $sqlFileMap): DataConnector
+            {
+                return new DataConnector();
+            }
+        }
+    }
+}
+
+namespace DaPigGuy\libPiggyEconomy\providers {
+    if (!class_exists(EconomyProvider::class)) {
+        class EconomyProvider
+        {
+            public function getMoney(\pocketmine\player\Player|string $player, \Closure $onSuccess): void
+            {
+                $onSuccess(0.0);
+            }
+
+            public function takeMoney(\pocketmine\player\Player|string $player, float $amount, \Closure $onSuccess): void
+            {
+                $onSuccess(true);
+            }
+
+            public function giveMoney(\pocketmine\player\Player|string $player, float $amount, \Closure $onSuccess): void
+            {
+                $onSuccess(true);
+            }
+        }
+    }
+}
+
+namespace DaPigGuy\libPiggyEconomy {
+    if (!class_exists(libPiggyEconomy::class)) {
+        final class libPiggyEconomy
+        {
+            public static function init(): void
+            {
+            }
+
+            public static function getProvider(string $economyName): \DaPigGuy\libPiggyEconomy\providers\EconomyProvider
+            {
+                return new \DaPigGuy\libPiggyEconomy\providers\EconomyProvider();
+            }
+        }
+    }
+}
+
+namespace IvanCraft623\languages {
+    if (!class_exists(Language::class)) {
+        final class Language
+        {
+            /**
+             * @param array<string, string> $messages
+             */
+            public function __construct(string $locale, array $messages)
+            {
+            }
+        }
+    }
+
+    if (!class_exists(Translator::class)) {
+        final class Translator
+        {
+            private string $defaultLanguage;
+
+            public function __construct(string $defaultLanguage = 'en_US')
+            {
+                $this->defaultLanguage = $defaultLanguage;
+            }
+
+            public function registerLanguage(Language $language): void
+            {
+            }
+
+            public function setDefaultLanguage(string $defaultLanguage): void
+            {
+                $this->defaultLanguage = $defaultLanguage;
+            }
+
+            public function getLanguage(): string
+            {
+                return $this->defaultLanguage;
+            }
+
+            /**
+             * @param array<string, mixed> $replacements
+             */
+            public function translate(mixed $target, string $key, array $replacements = []): string
+            {
+                return $key;
+            }
+        }
+    }
+}
