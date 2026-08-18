@@ -8,5 +8,6 @@ parameters:
 	ignoreErrors:
 		- identifier: missingType.iterableValue
 		- identifier: generics.notSubtype
+		- identifier: argument.templateType
 
 

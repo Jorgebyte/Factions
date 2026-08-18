@@ -54,7 +54,6 @@ $addDir = function (string $dir) use ($phar, $baseDir) {
 
 $addDir($baseDir . '/src');
 $addDir($baseDir . '/resources');
-$addDir($baseDir . '/vendor');
 
 $phar->addFile($baseDir . '/plugin.yml', 'plugin.yml');
 if (file_exists($baseDir . '/LICENSE')) {

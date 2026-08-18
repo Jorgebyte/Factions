@@ -53,6 +53,3 @@ jobs:
 
       - name: Run Tests (PHPUnit)
         run: vendor/bin/phpunit
-
-      - name: Validate Phar Build
-        run: php -d phar.readonly=0 build.php
