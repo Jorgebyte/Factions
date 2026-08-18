@@ -67,7 +67,6 @@ return (new PhpCsFixer\Config())
         // --- Functions ---
         'method_argument_space' => ['on_multiline' => 'ensure_fully_multiline'],
         'return_type_declaration' => ['space_before' => 'none'],
-        'visibility_required' => true,
 
         // --- Operators ---
         'binary_operator_spaces' => ['default' => 'single_space'],
