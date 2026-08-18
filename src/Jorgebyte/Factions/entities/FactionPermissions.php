@@ -78,7 +78,7 @@ final class FactionPermissions
     public function setPermission(Role $role, FactionPermission $permission, bool $granted): void
     {
         if ($role === Role::LEADER) {
-            return; 
+            return;
         }
 
         $this->matrix[$role->value][$permission->value] = $granted;

@@ -298,4 +298,3 @@ namespace IvanCraft623\RankSystem\tag {
         }
     }
 }
-

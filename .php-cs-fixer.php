@@ -41,7 +41,6 @@ return (new PhpCsFixer\Config())
         'single_line_after_imports' => true,
 
         // --- Classes ---
-        'final_class' => true,
         'ordered_class_elements' => true,
         'class_attributes_separation' => [
             'elements' => [

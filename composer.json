@@ -2,7 +2,7 @@
     "name": "jorgebyte/factions",
     "description": "Factions plugin for PocketMine-MP 5.0+",
     "type": "project",
-    "license": "AGPL-3.0",
+    "license": "AGPL-3.0-or-later",
     "authors": [
         {
             "name": "Jorgebyte",
