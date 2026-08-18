@@ -7,7 +7,7 @@ A modular, asynchronous Factions core plugin designed for **PocketMine-MP 5.x** 
 [![CI](https://github.com/Jorgebyte/Factions/actions/workflows/ci.yml/badge.svg)](https://github.com/Jorgebyte/Factions/actions)
 [![PocketMine-MP](https://img.shields.io/badge/PocketMine--MP-5.0+-orange.svg?style=flat-square)](https://pmmp.io/)
 [![PHP Version](https://img.shields.io/badge/PHP-8.2%20%7C%208.3%20%7C%208.4-blue.svg?style=flat-square)](https://www.php.net/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/License-AGPL--3.0-blue.svg?style=flat-square)](LICENSE)
 [![Translations](https://img.shields.io/badge/Translations-28%20Locales-9cf.svg?style=flat-square)](resources/languages)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.jorgebyte.com)
 
@@ -159,5 +159,5 @@ php -d phar.readonly=0 build.php
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [GNU Affero General Public License v3.0](LICENSE).
 

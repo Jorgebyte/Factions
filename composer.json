@@ -40,12 +40,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://repo.pmmp.io"
-        }
-    ],
     "config": {
         "optimize-autoloader": true,
         "sort-packages": true,
