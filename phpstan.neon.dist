@@ -1,0 +1,16 @@
+parameters:
+	level: 8
+	paths:
+		- src
+		- tests
+	bootstrapFiles:
+		- phpstan-bootstrap.php
+	ignoreErrors:
+		- identifier: missingType.iterableValue
+		- identifier: argument.templateType
+		- identifier: greater.alwaysTrue
+		- identifier: generics.notSubtype
+
+
+
+

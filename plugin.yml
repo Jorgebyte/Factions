@@ -1,0 +1,73 @@
+name: Factions
+api: 5.36.0
+version: 1.0.0
+author: Jorgebyte
+
+main: Jorgebyte\Factions\Main
+softdepend:
+  - RankSystem
+  - ScoreHud
+
+permissions:
+  factions.command:
+    default: true
+  factions.command.create:
+    default: true
+  factions.command.info:
+    default: true
+  factions.command.disband:
+    default: true
+  factions.command.invite:
+    default: true
+  factions.command.accept:
+    default: true
+  factions.command.deny:
+    default: true
+  factions.command.claim:
+    default: true
+  factions.command.unclaim:
+    default: true
+  factions.command.leave:
+    default: true
+  factions.command.kick:
+    default: true
+  factions.command.promote:
+    default: true
+  factions.command.money:
+    default: true
+  factions.command.deposit:
+    default: true
+  factions.command.withdraw:
+    default: true
+  factions.command.home:
+    default: true
+  factions.command.sethome:
+    default: true
+  factions.command.delhome:
+    default: true
+  factions.command.demote:
+    default: true
+  factions.command.map:
+    default: true
+  factions.command.chunk:
+    default: true
+  factions.command.top:
+    default: true
+  factions.command.ally:
+    default: true
+  factions.command.enemy:
+    default: true
+  factions.command.neutral:
+    default: true
+  factions.command.chat:
+    default: true
+  factions.command.cache:
+    default: op
+  factions.command.leader:
+    default: true
+  factions.command.setpower:
+    default: op
+  factions.command.addpower:
+    default: op
+  factions.command.removepower:
+    default: op

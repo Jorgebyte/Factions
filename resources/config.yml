@@ -1,0 +1,161 @@
+# The default language for plugin messages. Corresponds to a file name in the "lang" folder (e.g., en_US.ini).
+default-language: en_US
+
+economy:
+  provider: bedrockeconomy
+
+# --- Database Settings ---
+database:
+  # The database type. "sqlite" and "mysql" are supported.
+  type: sqlite
+
+  # Settings for SQLite. Only used if type is "sqlite".
+  sqlite:
+    # The file name of the database in the plugin data folder.
+    # You can also use an absolute path.
+    file: data.sqlite
+
+  # Settings for MySQL. Only used if type is "mysql".
+  mysql:
+    host: 127.0.0.1
+    # Avoid using the "root" user for security reasons. Create a dedicated user for your database.
+    username: root
+    password: ""
+    schema: factions_db
+
+  # The maximum number of simultaneous SQL queries.
+  # Recommended: 1 for sqlite, 2 or more for MySQL depending on server performance.
+  worker-limit: 1
+
+# --- Faction Settings ---
+factions:
+  creation:
+    # Cooldown in seconds required before a player can create another faction after disbanding (86400 = 24h)
+    disband-cooldown-seconds: 86400
+  name:
+    # Should the plugin validate faction names against the rules below?
+    enable-validation: true
+    # Minimum number of characters required for a faction name.
+    min-length: 3
+    # Maximum number of characters allowed for a faction name.
+    max-length: 16
+    # A regular expression (regex) to validate faction names.
+    # The default only allows letters, numbers, and underscores.
+    regex: "/^[a-zA-Z0-9_]+$/"
+  members:
+    # Maximum number of members allowed in a faction
+    max-per-faction: 15
+
+# --- Alliance Settings ---
+alliances:
+  # The maximum number of allies a single faction can have.
+  max-per-faction: 2
+  # How long (in seconds) an alliance request remains valid before expiring.
+  request-timeout-seconds: 60
+  # If true, members of the same faction can damage each other.
+  member-friendly-fire: false
+  # If true, allied factions can damage each other.
+  ally-friendly-fire: false
+
+# --- PvP Rule Overrides ---
+pvp:
+  # In these worlds, faction/ally PvP restrictions are ignored.
+  # Comparison is case-insensitive.
+  bypass-worlds:
+    - "pvp"
+
+# --- Claiming Settings ---
+claims:
+  # The cost in money from the faction bank to claim one chunk of land.
+  cost-per-chunk: 1000.0
+  # The maximum number of chunks a single faction can claim.
+  max-per-faction: 20
+  # Lista de mundos donde se permite claimear.
+  # Si la dejas vacía (allowed-worlds: []), se permitirá en todos los mundos.
+  allowed-worlds:
+    - "Factions"
+
+  # Spawn protection configuration.
+  spawn-protection:
+    # Set to true to prevent players from claiming chunks around the world spawn.
+    enabled: false
+    # Radius of chunks around the world spawn that cannot be claimed.
+    # For example, a value of 5 protects an 11x11 chunk area (5 on each side + the center one).
+    radius: 5
+
+  # Anti-desync mitigation for denied interactions in foreign claims.
+  # Helps reduce lag/ping bypass attempts when players try to break/place/use and clip out.
+  desync-mitigation:
+    enabled: true
+    cooldown-seconds: 0.35
+
+  # Chunk border visualizer tuning (/f chunk).
+  chunk-visualizer:
+    # low|medium|high particle density.
+    density: medium
+    # 1 = 3x3 area, 2 = 5x5 area, 3 = 7x7 area.
+    radius: 1
+    # Base render interval in ticks.
+    base-interval-ticks: 10
+    autoscale:
+      # Increase interval automatically when many players are visualizing chunks.
+      enabled: true
+      # Every N viewers increases interval multiplier by +1.
+      players-step: 8
+      # Hard cap for interval multiplier.
+      max-interval-multiplier: 4
+
+# --- Invitation Settings ---
+invite:
+  # How long (in seconds) an invitation to join a faction remains valid before expiring.
+  request-timeout-seconds: 60
+
+# --- Power & Raidability Settings ---
+power:
+  # Initial power assigned to a newly created faction
+  initial-power: 2
+  # Max power per member in a faction
+  power-per-member: 10
+  # Power gained by faction on killing an enemy player
+  power-per-kill: 5
+  # Power lost by faction on member death
+  power-per-death: 5
+  # Duration in seconds a faction power is frozen when reaching 0 power
+  power-freeze-seconds: 600
+  # Interval in minutes for online member power regeneration
+  regen-interval-minutes: 5
+  # Amount of power regenerated per interval for online members
+  regen-amount: 1
+
+# --- Home Settings ---
+home:
+  # Teleport delay in seconds for /f home (0 = instant)
+  teleport-warmup-seconds: 5
+
+# --- Cache / Warmup Settings ---
+cache:
+  warmup:
+    # If true, faction warmup runs asynchronously in batches on startup.
+    enabled: true
+    # Load factions of online players first.
+    prioritize-online: true
+    # Number of faction IDs processed per warmup batch.
+    batch-size: 25
+    # Delay between warmup batches in ticks.
+    interval-ticks: 10
+
+  faction:
+    # Soft limit for loaded factions before LRU eviction starts.
+    max-entries: 1000
+    # Process memory threshold in MB for triggering eviction.
+    memory-threshold-mb: 50
+    # TTLs by priority (seconds).
+    ttl-seconds:
+      low: 1800
+      medium: 3600
+      high: 300
+
+  invite:
+    # 0 = use invite.request-timeout-seconds. >0 overrides invite cache TTL.
+    ttl-override-seconds: 0
+

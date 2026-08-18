@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  quality:
+    name: Code Quality & Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, xml, pdo, sqlite3, curl, json
+          tools: composer:v2, php-cs-fixer
+          coverage: none
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install Dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Check Code Style (PHP-CS-Fixer)
+        run: php-cs-fixer fix --dry-run --diff --verbose
+
+      - name: Static Analysis (PHPStan)
+        run: vendor/bin/phpstan analyze --no-progress
+
+      - name: Run Tests (PHPUnit)
+        run: vendor/bin/phpunit
+
+      - name: Validate Phar Build
+        run: php -d phar.readonly=0 build.php
