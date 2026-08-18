@@ -5,6 +5,7 @@ parameters:
 		- tests
 	bootstrapFiles:
 		- phpstan-bootstrap.php
+	reportUnmatchedIgnoredErrors: false
 	ignoreErrors:
 		- identifier: missingType.iterableValue
 		- identifier: generics.notSubtype

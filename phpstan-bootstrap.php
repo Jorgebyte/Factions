@@ -144,6 +144,10 @@ namespace {
         }
         class_alias(PHPUnit_Framework_TestCase_Stub::class, \PHPUnit\Framework\TestCase::class);
     }
+
+    if (!interface_exists(\poggit\libasynql\DataConnector::class, false) && !class_exists(\poggit\libasynql\DataConnector::class, false)) {
+        require_once __DIR__ . '/stubs/virions.php';
+    }
 }
 
 namespace Ifera\ScoreHud\scoreboard {
