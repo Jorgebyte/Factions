@@ -34,7 +34,7 @@ final class CachePriorityTest extends TestCase
     {
         $this->assertSame(
             [1, 2, 3, 4],
-            array_map(static fn(CachePriority $priority): int => $priority->value, CachePriority::cases())
+            array_map(static fn (CachePriority $priority): int => $priority->value, CachePriority::cases())
         );
     }
 }
