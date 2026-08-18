@@ -35,10 +35,18 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Dependencies
-        run: composer install --prefer-dist --no-progress
+        run: composer install --prefer-dist --no-progress --ignore-platform-reqs
 
       - name: Check Code Style (PHP-CS-Fixer)
         run: php-cs-fixer fix --dry-run --diff --verbose
+
+      - name: Download Virions for Analysis
+        run: |
+          mkdir -p .virions
+          curl -sL https://poggit.pmmp.io/r/216503/Commando.phar -o .virions/Commando.phar
+          curl -sL https://poggit.pmmp.io/r/214300/libasynql.phar -o .virions/libasynql.phar
+          curl -sL https://poggit.pmmp.io/r/198754/libPiggyEconomy.phar -o .virions/libPiggyEconomy.phar
+          curl -sL https://poggit.pmmp.io/r/213567/languages.phar -o .virions/languages.phar
 
       - name: Static Analysis (PHPStan)
         run: vendor/bin/phpstan analyze --no-progress

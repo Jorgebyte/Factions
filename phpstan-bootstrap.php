@@ -31,16 +31,34 @@ namespace {
         }
     });
 
-    // Load PocketMine-MP autoloader
-    $pocketmineAutoload = 'phar://C:/Users/jorge/OneDrive/Escritorio/StreesCraft/PocketMine-MP.phar/vendor/autoload.php';
-    if (file_exists($pocketmineAutoload)) {
-        require_once $pocketmineAutoload;
+    // Load PocketMine-MP / Composer Autoloader
+    $candidateAutoloaders = [
+        __DIR__ . '/vendor/autoload.php',
+        dirname(__DIR__, 2) . '/vendor/autoload.php',
+        'phar://' . __DIR__ . '/PocketMine-MP.phar/vendor/autoload.php',
+        'phar://' . dirname(__DIR__, 2) . '/PocketMine-MP.phar/vendor/autoload.php',
+    ];
+    foreach ($candidateAutoloaders as $autoloader) {
+        if (file_exists($autoloader)) {
+            require_once $autoloader;
+            break;
+        }
     }
 
     // Build a classmap for Virions
     $virionClassmap = [];
-    $virionsDir = 'C:/Users/jorge/OneDrive/Escritorio/StreesCraft/virions';
-    if (is_dir($virionsDir)) {
+    $candidateDirs = array_filter([
+        getenv('VIRIONS_DIR') ?: null,
+        __DIR__ . '/.virions',
+        __DIR__ . '/virions',
+        dirname(__DIR__, 2) . '/virions',
+    ]);
+
+    foreach ($candidateDirs as $virionsDir) {
+        if (!is_dir($virionsDir)) {
+            continue;
+        }
+
         foreach (glob($virionsDir . '/*.phar') as $pharPath) {
             try {
                 $phar = new Phar($pharPath);
@@ -280,3 +298,4 @@ namespace IvanCraft623\RankSystem\tag {
         }
     }
 }
+

@@ -10,13 +10,8 @@
         }
     ],
     "require": {
-        "php": "^8.4",
-        "pocketmine/pocketmine-mp": "^5.36.0",
-        "cortexpe/commando": "^3.0",
-        "poggit/libasynql": "^4.0",
-        "dapigguy/libpiggyeconomy": "^2.1",
-        "sofe/await-generator": "^3.0",
-        "ivancraft623/languages": "^2.0.0"
+        "php": ">=8.2",
+        "pocketmine/pocketmine-mp": "^5.0.0"
     },
     "autoload": {
         "psr-4": {
